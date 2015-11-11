@@ -6,6 +6,7 @@
     "start": "node app.js"
   },
   "dependencies": {
+    "bunyan": "^1.5.1",
     "loopback": "^1.10.0",
     "loopback-datasource-juggler": "^1.7.0"
   },
