@@ -19,7 +19,7 @@ app.boot(__dirname);
  */
 
 app.use(function (req, res, next) {
-  log.info({hello:'world',a:1},'Time: %d', Date.now());
+  log.info({hello:'world'},'Time: %d', Date.now());
   next();
 })
 
