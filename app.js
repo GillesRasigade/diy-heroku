@@ -16,6 +16,11 @@ app.boot(__dirname);
  *  LoopBack support all express-compatible middleware.
  */
 
+app.use(function (req, res, next) {
+  console.log('Time: %d', Date.now());
+  next();
+})
+
 app.use(loopback.favicon());
 app.use(loopback.logger(app.get('env') === 'development' ? 'dev' : 'default'));
 app.use(loopback.cookieParser(app.get('cookieSecret')));
