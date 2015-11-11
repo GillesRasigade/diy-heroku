@@ -2,7 +2,7 @@ var loopback = require('loopback');
 var path = require('path');
 var app = module.exports = loopback();
 var bunyan = require('bunyan');
-var log = bunyan.createLogger({name: 'myapp'});
+var log = bunyan.createLogger({name: 'application'});
 
 /*
  * 1. Configure LoopBack models and datasources
