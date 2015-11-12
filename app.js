@@ -4,7 +4,9 @@ var loopback = require('loopback');
 var path = require('path');
 var app = module.exports = loopback();
 var bunyan = require('bunyan');
-var log = bunyan.createLogger({name: 'appli'});
+var log = bunyan.createLogger({
+  name: 'appli'
+});
 
 /*
  * 1. Configure LoopBack models and datasources
@@ -20,15 +22,20 @@ app.boot(__dirname);
  *  LoopBack support all express-compatible middleware.
  */
 
-app.use(function (req, res, next) {
-  log.info({hello:'world',a:2},'Time: %d', Date.now());
+app.use(function(req, res, next) {
+  log.info({
+    hello: 'world',
+    a: 2
+  }, 'Time: %d', Date.now());
   next();
 });
 
 app.use(loopback.favicon());
 app.use(loopback.logger(app.get('env') === 'development' ? 'dev' : 'default'));
 app.use(loopback.cookieParser(app.get('cookieSecret')));
-app.use(loopback.token({model: app.models.accessToken}));
+app.use(loopback.token({
+  model: app.models.accessToken
+}));
 app.use(loopback.json());
 app.use(loopback.urlencoded());
 app.use(loopback.methodOverride());
@@ -54,7 +61,7 @@ try {
   app.once('started', function(baseUrl) {
     console.log('Browse your REST API at %s%s', baseUrl, explorer.route);
   });
-} catch(e){
+} catch (e) {
   console.log(
     'Run `npm install loopback-explorer` to enable the LoopBack explorer'
   );
@@ -140,6 +147,6 @@ app.start = function() {
   });
 };
 
-if(require.main === module) {
+if (require.main === module) {
   app.start();
 }
