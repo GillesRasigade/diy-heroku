@@ -1,3 +1,5 @@
+'use strict';
+
 var loopback = require('loopback');
 var path = require('path');
 var app = module.exports = loopback();
@@ -21,7 +23,7 @@ app.boot(__dirname);
 app.use(function (req, res, next) {
   log.info({hello:'world',a:2},'Time: %d', Date.now());
   next();
-})
+});
 
 app.use(loopback.favicon());
 app.use(loopback.logger(app.get('env') === 'development' ? 'dev' : 'default'));
